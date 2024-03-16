@@ -1,0 +1,73 @@
+
+.create-multiple-page-form {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.create-multiple-page-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.create-multiple-page-form input[type="text"],
+.create-multiple-page-form textarea,
+.create-multiple-page-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.create-multiple-page-form input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-multiple-page-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Style pour la liste des pages */
+.list-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background: #4caf50;
+    padding: 25px;
+}
+.page-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+}
+.page-item h3 {
+font-size: 16px;
+}
+div#pageCarousel {
+    background: #4caf50;
+    width: 100%;
+}
+.carousel-item .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 10%;
+}
