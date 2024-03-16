@@ -11,6 +11,7 @@
 
 4 - Ajouter shortcode dans la page pour utiliser le plugin Create Multiple Page
 [create_multiple_page_form]
+![image](https://github.com/Aicha-TIT/Create-Multiple-Page-Plugin/assets/33624318/e8552f16-8781-434b-b575-cf72f114a68d)
 
 5- Remplir le formulaire et creer les pages désirés 
 ![image](https://github.com/Aicha-TIT/Create-Multiple-Page-Plugin/assets/33624318/4589e059-f61a-4bbd-a854-cdfd0ca5b861)
