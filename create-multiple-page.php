@@ -128,7 +128,7 @@ function create_multiple_page_action() {
         }
     }
 
-   // Rediriger vers la page d'accueil après la création des pages
+   // Rediriger vers la page d'accueil après la création des pages dans le formulaire
    wp_redirect( home_url() );
    exit;
 }
