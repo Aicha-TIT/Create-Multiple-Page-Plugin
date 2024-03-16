@@ -6,29 +6,25 @@ Version: 1.0
 Author: Aicha Wannes
 */
 
+// Enregistrer le style du plugin
 function add_plugin_styles() {
-    // Récupérer l'URL du fichier CSS
     $css_url = plugin_dir_url( __FILE__ ) . 'css/style.css';
-    // Enregistrer le fichier CSS
     wp_enqueue_style( 'plugin-style', $css_url );
 }
 add_action( 'wp_enqueue_scripts', 'add_plugin_styles' );
 
+// Enregistrer Bootstrap
 function add_bootstrap_to_plugin() {
-    // Inclure le fichier CSS de Bootstrap depuis le CDN
     wp_enqueue_style( 'bootstrap-css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' );
-
-    // Inclure le fichier JavaScript de Bootstrap depuis le CDN (si nécessaire)
-    // wp_enqueue_script( 'bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', array('jquery'), null, true );
 }
-
-// Action pour ajouter Bootstrap à votre plugin
 add_action( 'wp_enqueue_scripts', 'add_bootstrap_to_plugin' );
 
+// Shortcode pour afficher le formulaire et le carrousel de pages
 function create_multiple_page_form_shortcode() {
     ob_start();
     ?>
     <div class="create-multiple-page-form container">
+        <!-- Formulaire de création de page -->
         <form action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
             <input type="hidden" name="action" value="create_multiple_page_action">
             <label for="page_title">Titre :</label>
@@ -49,15 +45,19 @@ function create_multiple_page_form_shortcode() {
             <input type="submit" class="btn btn-primary" value="Créer la page">
         </form>
     </div>
-    <?php
 
-    // Afficher la liste des pages créées dans un carousel
-    $pages = get_pages();
-    $chunks = array_chunk($pages, 4); // Diviser les pages en groupes de 4
-    ?>
+    <!-- Carrousel de pages -->
     <div id="pageCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <?php
+            // Récupérer toutes les pages sauf la page actuelle
+            $current_page_id = get_the_ID();
+            $pages = get_pages(array('exclude' => $current_page_id));
+
+            // Diviser les pages en groupes de 4
+            $chunks = array_chunk($pages, 4);
+
+            // Afficher les pages dans le carrousel
             $active = true;
             foreach ($chunks as $chunk) {
                 ?>
@@ -83,6 +83,7 @@ function create_multiple_page_form_shortcode() {
             }
             ?>
         </div>
+        <!-- Flèches de navigation -->
         <a class="carousel-control-prev" href="#pageCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -127,9 +128,9 @@ function create_multiple_page_action() {
         }
     }
 
-    // Rediriger vers la page d'accueil après la création des pages
-    wp_redirect( home_url() );
-    exit;
+   // Rediriger vers la page d'accueil après la création des pages
+   wp_redirect( home_url() );
+   exit;
 }
 add_action( 'admin_post_create_multiple_page_action', 'create_multiple_page_action' );
 add_action( 'admin_post_nopriv_create_multiple_page_action', 'create_multiple_page_action' );
